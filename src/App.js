@@ -1,43 +1,45 @@
 import "./App.css";
-import logo from "./logo.png";
+import { Routes, Route } from "react-router-dom";
+import Nav from "./components/Nav/Nav";
+import Home from "./pages/Home/Home";
+import Products from "./pages/Products/Products";
+import Wishlist from "./pages/Wishlist/Wishlist";
+import Cart from "./pages/Cart/Cart";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import Footer from "./components/Footer/Footer";
+import { useWishlist } from "./context/wishlist-context";
+import { useCart } from "./context/cart-context";
+import { useEffect } from "react";
 
-function App() {
+export default function App() {
+  const { cartState, cartDispatch } = useCart();
+  const { wishlistState, wishlistDispatch } = useWishlist();
+
+  useEffect(() => {
+    let cartData = JSON.parse(localStorage.getItem("cartData"));
+    cartDispatch({ type: "GET_DATA", payload: cartData });
+    let wishlistData = JSON.parse(localStorage.getItem("wishlistData"));
+    wishlistDispatch({ type: "GET_DATA", payload: wishlistData });
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("wishlistData", JSON.stringify(wishlistState));
+    localStorage.setItem("cartData", JSON.stringify(cartState));
+  }, [wishlistState, cartState]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
-
-export default App;

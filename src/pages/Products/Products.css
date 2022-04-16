@@ -1,0 +1,21 @@
+.products-page {
+  width: 100%;
+  max-width: 125rem;
+  display: flex;
+  margin: auto;
+  /* border: 1px solid red; */
+}
+
+.products-main {
+  width: 100%;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.no-match-found-msg {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  text-align: center;
+}

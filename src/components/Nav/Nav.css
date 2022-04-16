@@ -1,0 +1,136 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.75rem 2.75rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
+}
+
+.nav-section {
+  margin: 0 1rem;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: "Permanent Marker", cursive;
+  margin-right: 3rem;
+}
+
+.nav-logo > .nav-links {
+  font-size: 2.5rem;
+  background: -webkit-linear-gradient(
+    var(--neon-orange-color),
+    var(--primary-text-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-list {
+  margin: 1rem;
+}
+
+.nav-links {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.nav-icons {
+  font-size: 1.5rem;
+  color: var(--secondary-text-color);
+}
+
+.number-badge {
+  position: absolute;
+  top: -0.9rem;
+  right: -0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50%;
+  background-color: #f00;
+  color: #fff;
+}
+
+.nav-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.05rem;
+  border: 1px solid #f5f5f6;
+  flex-grow: 1;
+  max-width: 400px;
+  background-color: #f5f5f6;
+}
+
+.nav-search > input {
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  max-width: 400px;
+  width: 50px;
+  flex-grow: 1;
+  margin-left: 1.5rem;
+  background-color: transparent;
+  color: var(--secondary-text-color);
+}
+
+.search-icon {
+  font-size: 1.05rem;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+}
+
+.active-nav-link {
+  color: var(--primary-text-color);
+}
+
+@media (max-width: 750px) {
+  .nav {
+    padding: 1rem 0.5rem;
+  }
+  .nav-logo {
+    margin-right: 1.25rem;
+  }
+  .nav-logo > .nav-links {
+    font-size: 2rem;
+  }
+  .nav-links {
+    font-size: 1.1rem;
+  }
+  .nav-search {
+    display: none;
+  }
+  .nav-list {
+    margin: 0.5rem;
+  }
+  .nav-header > .nav-ul > .nav-list:nth-child(1) {
+    display: none;
+  }
+}
